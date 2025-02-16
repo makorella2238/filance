@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { mainService } from "@/services/main.service";
 
 export default function RootLayout({
@@ -17,11 +16,5 @@ export default function RootLayout({
     }
   }, []);
 
-  const queryClient = new QueryClient();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
-  );
+  return <>{children}</>;
 }

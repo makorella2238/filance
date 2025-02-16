@@ -1,0 +1,92 @@
+.container {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-width: 443px;
+  width: 100%;
+  gap: 24px;
+  height: 100%;
+}
+
+.heroBlock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  padding: 42px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.textContainer {
+  width: 100%;
+}
+
+.mainTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 41px;
+  margin: 0;
+}
+
+.subtitle {
+  color: #374151;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.secondBlock {
+  flex: 1;
+  border-radius: 40px;
+  padding-top: 44px;
+  padding-left: 44px;
+  padding-right: 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.secondTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 24px;
+  margin: 0;
+}
+
+.description {
+  color: #000;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.iconsContainer {
+  margin-top: 24px;
+  display: flex;
+  gap: 6px;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 16px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+}
+
+/* Дополнительные медиа-запросы при необходимости */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .secondTitle {
+    font-size: 18px;
+  }
+}

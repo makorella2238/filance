@@ -1,6 +1,7 @@
 import { CodeInput } from "@/components/Codeinput/Codeinput";
 import { ResendTimer } from "@/components/ResendTimer/ResendTimer";
 import Link from "next/link";
+import styles from "./PreRegistrationVerificationPage.module.css";
 
 export const PreRegistrationVerificationPage = ({
   handleSubmitCode,
@@ -13,48 +14,41 @@ export const PreRegistrationVerificationPage = ({
 }: any) => {
 
   return (
-    <div className="min-h-screen flex justify-center border-2 border-[#0000001A] items-center mb-12 rounded-[40px] w-full">
-      {/* Контейнер с формой с добавлением обводки */}
-      <div className="bg-white rounded-3xl w-full max-w-[550px] flex flex-col justify-between border-solid">
-        <h2 className="text-2xl font-semibold text-center text-[#262626] mb-6">
-          Подтверждение почты
-        </h2>
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <h2 className={styles.title}>Подтверждение почты</h2>
 
-        <div className="mb-3">
-          <p className="text-[#484848]">
-            На почту <span className="font-bold">{email}</span> был отправлен смс код
+        <div className={styles.emailInfo}>
+          <p className={styles.emailText}>
+            На почту <span className={styles.emailHighlight}>{email}</span> был отправлен смс код
             подтверждения
           </p>
         </div>
 
-        {/* Поле для ввода кода */}
         <CodeInput setDigits={setDigits} digits={digits} />
 
-        {/* Отображение ошибок */}
-        {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
+        {error && <div className={styles.errorMessage}>{error}</div>}
 
-        <div className="mb-6">
+        <div className={styles.resendTimerContainer}>
           <ResendTimer onResendRequest={onResendCode} />
         </div>
 
-        <div className="w-full max-w-[304px] mx-auto">
+        <div className={styles.buttonContainer}>
           <button
-            onClick={handleSubmitCode}  // просто вызываем handleSubmitCode
+            onClick={handleSubmitCode}
             disabled={isLoading}
-            className={`w-full bg-[#7239EA] rounded-[100px] text-white py-[14.5px] transition-colors ${
-              isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#7139EA]"
-            }`}
+            className={`${styles.button} ${isLoading ? styles.buttonDisabled : ""}`}
           >
             {isLoading ? "Проверка..." : "Подтвердить"}
           </button>
         </div>
 
-        <div className="text-center mt-4">
-          <p className="text-center text-[#484848] font-medium text-[16px] mt-4 w-[304px] mx-auto">
+        <div className={styles.loginLinkContainer}>
+          <p className={styles.loginText}>
             Уже был тут?{" "}
             <Link
               href="/auth/login"
-              className="text-[#7239EA] font-medium hover:text-[#6229DA] transition-colors"
+              className={styles.loginLink}
             >
               Войдите
             </Link>

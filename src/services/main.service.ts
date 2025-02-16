@@ -1,4 +1,5 @@
 'use client';
+import { AxiosError } from "axios";
 
 import axios from 'axios';
 
@@ -25,58 +26,65 @@ export const mainService = {
     phone: string; 
     username: string 
   }) {
-    const response = await instance.post('register', data);
-    if (response.status >= 400) {
-      throw new Error(response.data?.detail?.ru || 'Ошибка регистрации');
+    try {
+      const response = await instance.post('register', data);
+      if (response.status >= 400) {
+        throw new Error(response.data?.detail?.ru || 'Ошибка регистрации');
+      }
+      return response.data;
+    } catch (error) {
+      if (error instanceof AxiosError) {  // 👈 Проверяем, является ли ошибка axios-ошибкой
+        throw new Error(error.response?.data?.detail?.ru || 'Ошибка регистрации');
+      }
+      throw new Error('Неизвестная ошибка');
     }
-    return response.data;
   },
 
   async login(data: { email: string; password: string }) {
     try {
-      const response = await instance.post('login', data);
+      const response = await instance.post('/login', data);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error during login:', error);
-      throw error; 
+      throw new Error(error.response?.data?.message || 'Ошибка авторизации');
     }
   },
 
   async verifyEmail(data: { email: string; code: string }) {
-    debugger
     if (!data.email) throw new Error("Email не найден");
-  
+
     try {
-      const response = await instance.post("verify", {
+      const response = await instance.post("/verify", {
         email: data.email,
         code: data.code,
       });
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error during email verification:", error);
-      debugger
-      throw error;
+      throw new Error(error.response?.data?.message || "Ошибка верификации");
     }
   },
   
 
   async resetCode(data: { email: string }) {
     try {
-      const response = await instance.post('reset-code', data);
+      const response = await instance.post("/reset-code", data);
       return response.data;
-    } catch (error) {
-      console.error('Error during reset code request:', error);
-      throw error;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || "Ошибка запроса");
     }
   },
 
   async resetPassword(data: { email: string; code: string }) {
     try {
-      const response = await instance.post('reset-pwd', { email: data.email, code: data.code });
+      const response = await instance.post('reset-pwd', { 
+        email: data.email, 
+        code: data.code 
+      });
       return response.data;
     } catch (error) {
-      console.error('Error during code reset:', error);
+      console.error('Error during password reset:', error);
       throw error;
     }
-  },
+  }
 };

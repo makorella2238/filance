@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import FreelanceHero from '@/components/FreelanceHero/FreelanceHero';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FreelanceHero from "@/components/FreelanceHero/FreelanceHero";
+import styles from "./RootLayout.module.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
@@ -10,9 +11,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <QueryClientProvider client={queryClient}>
-          <div className="flex w-full h-screen items-center justify-center p-6 space-x-6">
+          <div className={styles.rootContainer}>
             <FreelanceHero />
-            {children}
+            <div className={styles.contentWrapper}>{children}</div>
           </div>
         </QueryClientProvider>
       </body>

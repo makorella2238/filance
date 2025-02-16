@@ -1,0 +1,94 @@
+.container {
+    min-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    margin-bottom: 48px;
+    width: 100%;
+  }
+  
+  .formContainer {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 550px;
+    padding: 32px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #262626;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .emailInfo {
+    margin-bottom: 12px;
+  }
+  
+  .emailText {
+    color: #484848;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .emailHighlight {
+    font-weight: 700;
+  }
+  
+  .errorMessage {
+    color: #ef4444;
+    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .resendTimerContainer {
+    margin-bottom: 24px;
+  }
+  
+  .buttonContainer {
+    width: 100%;
+    max-width: 304px;
+    margin: 0 auto;
+  }
+  
+  .button {
+    width: 100%;
+    background: #7239EA;
+    border-radius: 100px;
+    color: white;
+    padding: 14.5px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s, opacity 0.2s;
+  }
+  
+  .button:hover {
+    background: #6229DA;
+  }
+  
+  .buttonDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .loginLinkContainer {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .loginLink {
+    color: #7239EA;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .loginLink:hover {
+    color: #6229DA;
+  }

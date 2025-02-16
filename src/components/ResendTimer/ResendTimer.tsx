@@ -11,10 +11,7 @@ export const ResendTimer = ({ onResendRequest }: ResendTimerProps) => {
   const [isActive, setIsActive] = useState(true)
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
-    
-    // Запускаем интервал сразу при монтировании
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       setSeconds((prev) => {
         if (prev <= 1) {
           setIsActive(false)
@@ -26,7 +23,7 @@ export const ResendTimer = ({ onResendRequest }: ResendTimerProps) => {
     }, 1000)
 
     return () => clearInterval(interval)
-  }, []) // Пустой массив зависимостей = запуск только при монтировании
+  }, [])
 
   const formatTime = (sec: number) => {
     const minutes = Math.floor(sec / 60)
@@ -37,8 +34,7 @@ export const ResendTimer = ({ onResendRequest }: ResendTimerProps) => {
   const handleResend = () => {
     setSeconds(60)
     setIsActive(true)
-    
-    // Перезапускаем таймер
+
     const interval = setInterval(() => {
       setSeconds((prev) => {
         if (prev <= 1) {
@@ -49,18 +45,31 @@ export const ResendTimer = ({ onResendRequest }: ResendTimerProps) => {
         return prev - 1
       })
     }, 1000)
-    
+
     onResendRequest()
   }
 
   return (
-    <div className="text-center">
+    <div style={{ textAlign: "center" }}>
       {isActive && seconds > 0 ? (
-        <span>Повторная отправка через {formatTime(seconds)}</span>
+        <span style={{ color: "#333", fontSize: "14px" }}>
+          Повторная отправка через {formatTime(seconds)}
+        </span>
       ) : (
         <button
           onClick={handleResend}
-          className="text-[#7239EA] hover:text-[#6229DA] font-medium transition-colors"
+          style={{
+            background: "none",
+            border: "none",
+            color: "#7239EA",
+            fontSize: "14px",
+            fontWeight: "500",
+            cursor: "pointer",
+            textDecoration: "underline",
+            transition: "color 0.3s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#6229DA")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#7239EA")}
         >
           Получить код повторно
         </button>

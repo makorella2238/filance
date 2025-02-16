@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, KeyboardEvent } from "react"
+import styles from "./CodeInput.module.css"
 
 export const CodeInput = ({digits, setDigits}: {
   digits: string[], 
@@ -8,13 +9,13 @@ export const CodeInput = ({digits, setDigits}: {
 }) => {
   const inputRefs = useRef<Array<HTMLInputElement | null>>([])
 
+  // Логика обработчиков остается без изменений
   const handleChange = (index: number, value: string) => {
-    if (/^\d?$/.test(value)) { // Разрешаем пустую строку
+    if (/^\d?$/.test(value)) {
       const newDigits = [...digits]
       newDigits[index] = value
       setDigits(newDigits)
       
-      // Автофокус на следующее поле только если введена цифра
       if (value && index < 3) {
         inputRefs.current[index + 1]?.focus()
       }
@@ -23,14 +24,12 @@ export const CodeInput = ({digits, setDigits}: {
 
   const handleKeyDown = (index: number, e: KeyboardEvent) => {
     if (e.key === 'Backspace') {
-      // Если поле пустое - очищаем предыдущее
       if (!digits[index] && index > 0) {
         const newDigits = [...digits]
         newDigits[index - 1] = ''
         setDigits(newDigits)
         inputRefs.current[index - 1]?.focus()
       }
-      // Если есть значение - очищаем текущее
       else if (digits[index]) {
         const newDigits = [...digits]
         newDigits[index] = ''
@@ -40,7 +39,7 @@ export const CodeInput = ({digits, setDigits}: {
   }
 
   return (
-    <div className="flex justify-center gap-3 mb-6">
+    <div className={styles.container}>
       {digits.map((digit, index) => (
         <input
           key={index}
@@ -53,8 +52,7 @@ export const CodeInput = ({digits, setDigits}: {
           }}
           onChange={(e) => handleChange(index, e.target.value)}
           onKeyDown={(e) => handleKeyDown(index, e)}
-          className="w-[92px] h-[91px] text-3xl text-center text-[#181E2E] font-semibold border-2  border-gray-300 rounded-xl 
-                     focus:border-[#7239EA] focus:outline-none focus:ring-2 focus:ring-[#7239EA]"
+          className={styles.inputField}
         />
       ))}
     </div>

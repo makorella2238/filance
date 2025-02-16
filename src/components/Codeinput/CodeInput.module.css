@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* соответствует gap-3 в Tailwind (3 * 4px = 12px) */
+    margin-bottom: 24px; /* соответствует mb-6 в Tailwind (6 * 4px = 24px) */
+  }
+  
+  .inputField {
+    width: 92px;
+    height: 91px;
+    font-size: 1.875rem; /* 30px */
+    text-align: center;
+    color: #181E2E;
+    font-weight: 600;
+    border: 2px solid #D1D5DB; /* соответствует border-gray-300 */
+    border-radius: 12px; /* rounded-xl */
+    transition: all 0.2s ease;
+  }
+  
+  .inputField:focus {
+    border-color: #7239EA;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(114, 57, 234, 0.5); /* focus:ring-2 и цвет */
+  }
+  
+  /* Опционально: стили для состояний */
+  .inputField:hover {
+    border-color: #9CA3AF;
+  }
+  
+  .inputField:disabled {
+    background-color: #F3F4F6;
+    cursor: not-allowed;
+  }

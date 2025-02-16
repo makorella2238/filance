@@ -44,19 +44,19 @@ export default function FreelanceHero() {
         
         {/* Иконки */}
         <div className="mt-6 flex gap-1.5">
-          <Image src="/header/fl.png" alt="fl" width={40} height={40} />
-          <Image src="/header/kwork.png" alt="kwork" width={40} height={40} />
-          <Image src="/header/habar.png" alt="habar" width={40} height={40} />
-          <Image src="/header/youdo.png" alt="youdo" width={40} height={40} />
+          <Image src="/layout/fl.png" alt="fl" width={40} height={40} />
+          <Image src="/layout/kwork.png" alt="kwork" width={40} height={40} />
+          <Image src="/layout/habar.png" alt="habar" width={40} height={40} />
+          <Image src="/layout/youdo.png" alt="youdo" width={40} height={40} />
         </div>
 
         {/* Навигационные кнопки */}
         <div className="absolute bottom-4 right-8 flex space-x-2">
           <button>
-            <Image src="/header/prev.png" alt="Previous" width={40} height={40} />
+            <Image src="/layout/prev.png" alt="Previous" width={40} height={40} />
           </button>
           <button>
-            <Image src="/header/next.png" alt="Next" width={40} height={40} />
+            <Image src="/layout/next.png" alt="Next" width={40} height={40} />
           </button>
         </div>
       </div>

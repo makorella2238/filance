@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import RegisterPage from "@/components/screen/Register/RegisterPage";
 import { useState } from "react";
 import { mainService } from "@/services/main.service";
@@ -15,11 +15,19 @@ export type RegisterFormDataProps = {
 
 export default function Home() {
   const router = useRouter();
+
+  const methods = useForm<RegisterFormDataProps>({
+    defaultValues: {
+      email: "",
+      password: "",
+      username: "",
+      phone: "",
+    },
+  });
   const {
-    register,
     handleSubmit,
     formState: { errors, touchedFields },
-  } = useForm<RegisterFormDataProps>();
+  } = methods;
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,31 +38,36 @@ export default function Home() {
       setError(null);
 
       const response = await mainService.register(data);
-      
-      localStorage.setItem('access_token', response.access_token);
-      localStorage.setItem('refresh_token', response.refresh_token);
-      localStorage.setItem('email', response.response.email);
+
+      localStorage.setItem("access_token", response.access_token);
+      localStorage.setItem("refresh_token", response.refresh_token);
+      localStorage.setItem("email", data.email);
       mainService.setAuthHeader(response.access_token);
 
       if (response.response.email) {
-        router.push('/verify-email');
+        router.push("/verify-email");
       }
     } catch (error: any) {
-      console.error('Registration error:', error);
-      setError(error.message || 'Ошибка регистрации');
+      console.error("Registration error:", error);
+      setError(error.message || "Ошибка регистрации");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <RegisterPage
-      register={register}
-      errors={errors}
-      touchedFields={touchedFields as Record<keyof RegisterFormDataProps, boolean>}
-      onSubmit={handleSubmit(onSubmit)}
-      isLoading={isLoading}
-      error={!!error}
-    />
+    <FormProvider {...methods}>
+      {" "}
+      {/* Оборачиваем RegisterPage в FormProvider */}
+      <RegisterPage
+        register={methods.register}
+        errors={errors}
+        touchedFields={methods.formState.touchedFields} // передаем touchedFields
+        onSubmit={handleSubmit(onSubmit)}
+        isLoading={isLoading}
+        error={!!error}
+        setValue={methods.setValue}
+      />
+    </FormProvider>
   );
 }

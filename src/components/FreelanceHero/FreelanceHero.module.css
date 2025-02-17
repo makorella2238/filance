@@ -90,3 +90,20 @@
     font-size: 18px;
   }
 }
+
+
+/* Иконки */
+.iconContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Навигационные кнопки */
+.navigation {
+  position: absolute;
+  bottom: 16px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+}

@@ -1,177 +1,241 @@
 .container {
-    font-family: "Manrope", sans-serif;
-    min-height: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 40px;
-    margin-bottom: 48px;
-    width: 100%;
-  }
+  font-family: "Manrope", sans-serif;
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.formContainer {
+  background: white;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 550px;
+  padding: 32px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.logoText {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 304px;
+  margin: 0 auto;
+}
+
+.inputGroup {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  color: #6f6f6f;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.smallLabel {
+  composes: label;
+  font-size: 12px;
+  color: #6f6f6f;
+}
+
+.input {
+  width: 100%;
+  padding: 14.5px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 16px;
+  color: #484848;
+}
+
+.input::placeholder {
+  color: #484848;
+  font-size: 16px; /* Увеличиваем с 14px до 16px */
+  opacity: 1; /* Для браузеров Firefox */
+}
+
+.input:-ms-input-placeholder {
+  /* Для Internet Explorer 10-11 */
+  color: #484848;
+  font-size: 16px;
+}
+
+.input::-ms-input-placeholder {
+  /* Для Microsoft Edge */
+  color: #484848;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #7239ea;
+  box-shadow: 0 0 0 2px rgba(114, 57, 234, 0.2);
+}
+
+.errorInput {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.validInput {
+  border-color: red;
+}
+
+.passwordInputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.errorMessage {
+  color: #ef4444;
+  text-align: center;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.submitButton {
+  margin-top: 12px;
+  width: 100%;
+  background: #7239ea;
+  border-radius: 100px;
+  color: white;
+  padding: 14.5px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #6229da;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.loginText {
+  color: #2e2e2e;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+.loginLink {
+  color: #7239ea;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.loginLink:hover {
+  color: #6229da;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+}
+
+.country-select {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  appearance: none;
+}
+
+.flag-icon {
+  display: flex;
+  align-items: center;
+}
+
+
+.select {
+  width: 150px; /* Задаем ширину для select */
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Убираем стандартный стиль */
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+  margin-bottom: 8px;
+
+}
+
+.select:focus {
+  border-color: #007bff; /* Изменение бордера на синий при фокусе */
+}
+
+.selectOption {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.flagIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%; /* Округлая форма флага */
+  object-fit: cover;
+  margin-left: 8px; /* Отступ слева */
+  margin-bottom: 8px;
+}
+
+.inputGroup div select {
+  margin-right: 8px; /* Отступ между select и флагом */
   
-  .formContainer {
-    background: white;
-    border-radius: 24px;
-    width: 100%;
-    max-width: 550px;
-    padding: 32px;
-  }
-  
-  .logoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-  
-  .logoText {
-    font-size: 28px;
-    font-weight: 700;
-    color: #000;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #262626;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 304px;
-    margin: 0 auto;
-  }
-  
-  .inputGroup {
-    width: 100%;
-  }
-  
-  .label {
-    display: block;
-    font-size: 14px;
-    color: #6F6F6F;
-    text-align: left;
-    margin-bottom: 4px;
-  }
-  
-  .smallLabel {
-    composes: label;
-    font-size: 12px;
-    color: #6F6F6F;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 14.5px 14px;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    font-size: 16px;
-    color: #484848;
-  }
-  
-  .input::placeholder {
-    color: #484848;
-    font-size: 16px; /* Увеличиваем с 14px до 16px */
-    opacity: 1; /* Для браузеров Firefox */
-  }
-  
-  .input:-ms-input-placeholder {
-    /* Для Internet Explorer 10-11 */
-    color: #484848;
-    font-size: 16px;
-  }
-  
-  .input::-ms-input-placeholder {
-    /* Для Microsoft Edge */
-    color: #484848;
-    font-size: 16px;
-  }
-  
-  .input:focus {
-    outline: none;
-    border-color: #7239EA;
-    box-shadow: 0 0 0 2px rgba(114, 57, 234, 0.2);
-  }
-  
-  .errorInput {
-    border-color: #ef4444;
-    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
-  }
-  
-  .validInput {
-    border-color: red;
-  }
-  
-  .passwordInputWrapper {
-    position: relative;
-    width: 100%;
-  }
-  
-  .eyeButton {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-  
-  .errorMessage {
-    color: #ef4444;
-    text-align: center;
-    margin: 16px 0;
-    font-size: 14px;
-  }
-  
-  .submitButton {
-    margin-top: 12px;
-    width: 100%;
-    background: #7239EA;
-    border-radius: 100px;
-    color: white;
-    padding: 14.5px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
-  }
-  
-  .submitButton:hover:not(:disabled) {
-    background: #6229DA;
-  }
-  
-  .submitButton:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  .loading {
-    opacity: 0.5;
-    cursor: progress;
-  }
-  
-  .loginText {
-    color: #2e2e2e;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 12px;
-  }
-  
-  .loginLink {
-    color: #7239EA;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  
-  .loginLink:hover {
-    color: #6229DA;
-  }
+}
+

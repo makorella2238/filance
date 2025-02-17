@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { FC, useState } from "react";
 import Image from "next/image";
@@ -33,7 +33,12 @@ const AuthPage: FC<AuthPageProps> = ({
     <div className={styles.container}>
       <div className={styles.formWrapper}>
         <div className={styles.logoWrapper}>
-          <Image src="/auth/logo.png" alt="SpaceFreelance" width={32} height={32} />
+          <Image
+            src="/auth/logo.png"
+            alt="SpaceFreelance"
+            width={32}
+            height={32}
+          />
           <h2 className={styles.title}>SpaceFreelance</h2>
         </div>
 
@@ -45,7 +50,11 @@ const AuthPage: FC<AuthPageProps> = ({
             <input
               type="text"
               placeholder="Ваш логин или email"
-              className={`${styles.input} ${touchedFields.email && errors.email ? styles.inputError : ""}`}
+              className={`${styles.input} ${
+                touchedFields.email && errors.email && errors.email.message
+                  ? styles.inputError
+                  : ""
+              }`}
               {...register("email", { required: "Email is required" })}
             />
           </div>
@@ -56,19 +65,31 @@ const AuthPage: FC<AuthPageProps> = ({
               <input
                 {...register("password", {
                   required: "Обязательное поле",
-                  minLength: { value: 6, message: "Минимум 6 символов" }
+                  minLength: { value: 6, message: "Минимум 6 символов" },
                 })}
                 type={showPassword ? "text" : "password"}
                 placeholder="Введите свой пароль"
-                className={`${styles.input} ${touchedFields.password && errors.password ? styles.inputError : ""}`}
+                className={`${styles.input} ${
+                  touchedFields.password &&
+                  errors.password &&
+                  errors.password.message
+                    ? styles.inputError
+                    : ""
+                }`}
               />
-              <button type="button" onClick={togglePasswordVisibility} className={styles.eyeButton}>
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className={styles.eyeButton}
+              >
                 <Image src="/auth/eye.png" alt="eye" width={18} height={18} />
               </button>
             </div>
           </div>
 
-          {error && <div className={styles.errorMessage}>Ошибка авторизации</div>}
+          {error && (
+            <div className={styles.errorMessage}>Ошибка авторизации</div>
+          )}
 
           <div className={styles.inputWrapper}>
             <button

@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { mainService } from "@/services/main.service";
 
 export const RecoveryAccessPage = () => {
-  const [email, setEmail] = useState("makorell@gmail.com");
+  const email = localStorage.getItem("email") || "test@gmail.ru";
   const [digits, setDigits] = useState(["", "", "", ""]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);

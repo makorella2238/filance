@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function VerifyEmail() {
   const router = useRouter();
   
-  const [email, setEmail] = useState("makorell@gmail.com");
+  const email = localStorage.getItem("email") || "test@gmail.ru";
   const [digits, setDigits] = useState<string[]>(["", "", "", ""]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

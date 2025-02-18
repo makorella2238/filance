@@ -7,7 +7,7 @@ import AuthPage from '@/components/screen/Login/LoginPage';
 import { mainService } from '@/services/main.service';
 
 interface LoginFormData {
-  email: string;
+  login: string;
   password: string;
 }
 
@@ -32,7 +32,7 @@ export default function SignIn() {
     } finally {
       setIsLoading(false);
     }
-  };
+  };  
 
   return (
     <AuthPage

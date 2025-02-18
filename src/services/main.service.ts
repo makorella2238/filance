@@ -40,9 +40,12 @@ export const mainService = {
     }
   },
 
-  async login(data: { email: string; password: string }) {
+  async login(data: { login: string; password: string }) {
+    console.log(data)
+    debugger
     try {
       const response = await instance.post("/login", data);
+      
       return response.data;
     } catch (error: any) {
       console.error("Error during login:", error);

@@ -75,6 +75,15 @@
   color: #484848;
 }
 
+.inputPhone {
+  width: 100%;
+  padding: 14px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 16px;
+  color: #484848;
+}
+
 .input::placeholder {
   color: #484848;
   font-size: 16px; /* Увеличиваем с 14px до 16px */
@@ -92,6 +101,12 @@
   color: #484848;
   font-size: 16px;
 }
+
+.inputPhone:focus {
+  outline: none;
+  border: none;
+}
+
 
 .input:focus {
   outline: none;
@@ -238,4 +253,3 @@
   margin-right: 8px; /* Отступ между select и флагом */
   
 }
-

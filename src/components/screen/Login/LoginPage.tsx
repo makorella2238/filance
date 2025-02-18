@@ -51,11 +51,11 @@ const AuthPage: FC<AuthPageProps> = ({
               type="text"
               placeholder="Ваш логин или email"
               className={`${styles.input} ${
-                touchedFields.email && errors.email && errors.email.message
+                touchedFields.login && errors.login && errors.login.message
                   ? styles.inputError
                   : ""
               }`}
-              {...register("email", { required: "Email is required" })}
+              {...register("login", { required: "Email is required" })}
             />
           </div>
 
